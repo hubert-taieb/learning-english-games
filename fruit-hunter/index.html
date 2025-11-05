@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Hunter - Educational Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>🍎 Fruit Hunter</h1>
+            <p>Click only on the FRUITS! Avoid other words.</p>
+            <div class="level-selector">
+                <h3>Choose Your Level:</h3>
+                <button id="level1-btn" class="level-btn active">Level 1: Static Words</button>
+                <button id="level2-btn" class="level-btn">Level 2: Moving Words</button>
+                <button id="level3-btn" class="level-btn">Level 3: French Translation 🇫🇷</button>
+            </div>
+            <div class="score-board">
+                <span>Level: <span id="current-level">1</span></span>
+                <span>Score: <span id="score">0</span></span>
+                <span>Lives: <span id="lives">❤️❤️❤️</span></span>
+                <span>Time: <span id="timer">0:00</span></span>
+                <button id="start-btn" class="start-btn">Start Game</button>
+            </div>
+        </header>
+        
+        <div id="game-area" class="game-area">
+            <!-- Moving words will appear here -->
+            <!-- Witch face for wrong answers -->
+            <div id="witch-face" class="witch-face hidden">
+                🧙‍♀️ NO!
+            </div>
+        </div>
+
+        <!-- Level 3 Translation Interface -->
+        <div id="translation-interface" class="translation-interface hidden">
+            <div class="translation-instructions">
+                <p>🇫🇷 Click the English translation when you see a French fruit! 🇬🇧</p>
+            </div>
+            <div id="translation-buttons" class="translation-buttons">
+                <!-- English translation buttons will be generated here -->
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div id="results-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>🎉 Game Over!</h3>
+                <div id="final-score"></div>
+                <div class="results-section">
+                    <div class="correct-answers">
+                        <h4>✅ Correct Fruits:</h4>
+                        <div id="correct-list"></div>
+                    </div>
+                    <div class="wrong-answers">
+                        <h4>❌ Mistakes:</h4>
+                        <div id="wrong-list"></div>
+                    </div>
+                </div>
+                <button id="play-again-btn" class="play-again-btn">Play Again</button>
+                <a href="../index.html" class="back-btn">← Back to Games</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

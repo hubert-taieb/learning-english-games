@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Neighbors Adventure - Learn Animals in English</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1>🦊 Animal Neighbors Adventure</h1>
+            <p class="subtitle">Discover the animals living near you!</p>
+            <button class="back-btn" onclick="window.location.href='../index.html'">← Back to Games</button>
+        </header>
+
+        <!-- Game Info Bar -->
+        <div class="game-info">
+            <div class="score-board">
+                <div class="stat">Level: <span id="currentLevel">1</span></div>
+                <div class="stat">Score: <span id="score">0</span></div>
+                <div class="stat">Lives: <span id="lives">❤️❤️❤️</span></div>
+                <div class="stat">Stars: <span id="stars">⭐⭐⭐</span></div>
+            </div>
+            <button id="languageBtn" class="language-btn" onclick="toggleLanguage()">🇬🇧 English</button>
+        </div>
+
+        <!-- Home Screen / Level Selection -->
+        <div id="homeScreen" class="screen active">
+            <div class="welcome-section">
+                <h2 id="welcomeTitle">Welcome to Animal Neighbors!</h2>
+                <p id="welcomeText">Learn about animals, their body parts, and how to describe them in English.</p>
+            </div>
+            
+            <div class="levels-grid">
+                <div class="level-card" id="level1Card" onclick="startLevel(1)">
+                    <div class="level-number">Level 1</div>
+                    <div class="level-icon">🔍</div>
+                    <h3 id="level1Title">Animal Spotter</h3>
+                    <p id="level1Desc">Find animals in the backyard</p>
+                    <div class="level-stars" id="level1Stars">
+                        <span class="star unlocked">⭐</span>
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                    </div>
+                    <button class="play-btn">Play</button>
+                </div>
+
+                <div class="level-card locked" id="level2Card">
+                    <div class="level-number">Level 2</div>
+                    <div class="level-icon">🦅</div>
+                    <h3 id="level2Title">Body Parts Detective</h3>
+                    <p id="level2Desc">Learn animal body parts</p>
+                    <div class="level-stars" id="level2Stars">
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                    </div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+
+                <div class="level-card locked" id="level3Card">
+                    <div class="level-number">Level 3</div>
+                    <div class="level-icon">📝</div>
+                    <h3 id="level3Title">Describe the Animal</h3>
+                    <p id="level3Desc">Use opposites and descriptions</p>
+                    <div class="level-stars" id="level3Stars">
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                    </div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+
+                <div class="level-card locked" id="level4Card">
+                    <div class="level-number">Level 4</div>
+                    <div class="level-icon">🎭</div>
+                    <h3 id="level4Title">Animal Riddles</h3>
+                    <p id="level4Desc">Solve fun animal riddles</p>
+                    <div class="level-stars" id="level4Stars">
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                        <span class="star locked">⭐</span>
+                    </div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 1: Animal Spotter -->
+        <div id="level1Screen" class="screen">
+            <div class="level-header">
+                <h2 id="level1ScreenTitle">🔍 Level 1: Animal Spotter</h2>
+                <p id="level1Instruction" class="instruction">Click on the animal!</p>
+            </div>
+            
+            <div class="prompt-box">
+                <h3 id="findPrompt">Find the:</h3>
+                <div class="target-animal" id="targetAnimal">spider</div>
+            </div>
+
+            <div class="backyard-scene" id="backyardScene">
+                <!-- Animals will be dynamically positioned here -->
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="level1Progress"></div>
+                <span id="progressText">0 / 10</span>
+            </div>
+        </div>
+
+        <!-- Level 2: Body Parts Detective -->
+        <div id="level2Screen" class="screen">
+            <div class="level-header">
+                <h2 id="level2ScreenTitle">🦅 Level 2: Body Parts Detective</h2>
+                <p id="level2Instruction" class="instruction">What is this body part?</p>
+            </div>
+
+            <div class="question-area">
+                <div class="body-part-display" id="bodyPartDisplay">
+                    <div class="body-part-visual" id="bodyPartVisual">👁️</div>
+                    <p class="question-text" id="bodyPartQuestion">What is this?</p>
+                </div>
+
+                <div class="options-grid" id="bodyPartOptions">
+                    <!-- Options will be generated dynamically -->
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="level2Progress"></div>
+                <span id="progressText2">0 / 12</span>
+            </div>
+        </div>
+
+        <!-- Level 3: Describe the Animal -->
+        <div id="level3Screen" class="screen">
+            <div class="level-header">
+                <h2 id="level3ScreenTitle">📝 Level 3: Describe the Animal</h2>
+                <p id="level3Instruction" class="instruction">Choose the correct description!</p>
+            </div>
+
+            <div class="question-area">
+                <div class="animal-display" id="animalDisplay">
+                    <div class="animal-visual" id="animalVisual">🐭</div>
+                    <p class="question-text" id="descriptionQuestion">Is the mouse big or small?</p>
+                </div>
+
+                <div class="grammar-helper" id="grammarHelper">
+                    <p><strong>Remember:</strong> It <em>is</em> (one thing) / They <em>are</em> (many things)</p>
+                </div>
+
+                <div class="options-grid" id="descriptionOptions">
+                    <!-- Options will be generated dynamically -->
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="level3Progress"></div>
+                <span id="progressText3">0 / 15</span>
+            </div>
+        </div>
+
+        <!-- Level 4: Animal Riddles -->
+        <div id="level4Screen" class="screen">
+            <div class="level-header">
+                <h2 id="level4ScreenTitle">🎭 Level 4: Animal Riddles</h2>
+                <p id="level4Instruction" class="instruction">Solve the riddle!</p>
+            </div>
+
+            <div class="riddle-area">
+                <div class="riddle-box" id="riddleBox">
+                    <h3 id="riddleTitle">Who am I?</h3>
+                    <div class="riddle-clues" id="riddleClues">
+                        <p class="clue">• I am small.</p>
+                        <p class="clue">• I have wings.</p>
+                        <p class="clue">• I am red with black dots.</p>
+                    </div>
+                </div>
+
+                <div class="animal-options-grid" id="riddleOptions">
+                    <!-- Options will be generated dynamically -->
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="level4Progress"></div>
+                <span id="progressText4">0 / 10</span>
+            </div>
+        </div>
+
+        <!-- Level Complete Modal -->
+        <div id="levelCompleteModal" class="modal">
+            <div class="modal-content">
+                <h2 id="completeTitle">🎉 Level Complete!</h2>
+                <div class="stars-earned" id="starsEarned">
+                    <span class="star-big">⭐</span>
+                    <span class="star-big">⭐</span>
+                    <span class="star-big">⭐</span>
+                </div>
+                <div class="stats">
+                    <p><strong id="scoreLabel">Score:</strong> <span id="levelScore">0</span></p>
+                    <p><strong id="accuracyLabel">Accuracy:</strong> <span id="accuracy">0%</span></p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn-primary" id="nextLevelBtn" onclick="goToNextLevel()">Next Level →</button>
+                    <button class="btn-secondary" onclick="goHome()">Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content">
+                <h2 id="gameOverTitle">😔 Game Over</h2>
+                <p id="gameOverText">You ran out of lives! Try again?</p>
+                <div class="stats">
+                    <p><strong id="finalScoreLabel">Final Score:</strong> <span id="gameOverScore">0</span></p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn-primary" onclick="retryLevel()">Try Again</button>
+                    <button class="btn-secondary" onclick="goHome()">Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Results Modal -->
+        <div id="finalResultsModal" class="modal">
+            <div class="modal-content final-results">
+                <h2 id="congratsTitle">🎊 Congratulations!</h2>
+                <p id="congratsText">You completed all 4 levels!</p>
+                
+                <div class="final-stats">
+                    <div class="stat-box">
+                        <h3 id="totalScoreLabel">Total Score</h3>
+                        <p class="stat-value" id="totalScore">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 id="totalStarsLabel">Stars Earned</h3>
+                        <p class="stat-value" id="totalStarsEarned">0 / 12</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 id="medalLabel">Achievement</h3>
+                        <p class="stat-value medal" id="medal">🥉 Bronze</p>
+                    </div>
+                </div>
+
+                <div class="achievements" id="achievements">
+                    <h3 id="achievementsTitle">What You Learned:</h3>
+                    <ul>
+                        <li id="achievement1">✅ Identified 15 different animals</li>
+                        <li id="achievement2">✅ Learned 11 animal body parts</li>
+                        <li id="achievement3">✅ Practiced using opposites</li>
+                        <li id="achievement4">✅ Used "It is" and "They are" correctly</li>
+                    </ul>
+                </div>
+
+                <div class="modal-buttons">
+                    <button class="btn-primary" onclick="playAgain()">Play Again</button>
+                    <button class="btn-secondary" onclick="window.location.href='../index.html'">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Overlay -->
+        <div id="feedbackOverlay" class="feedback-overlay">
+            <div class="feedback-content" id="feedbackContent">
+                <span class="feedback-icon" id="feedbackIcon">✅</span>
+                <p class="feedback-text" id="feedbackText">Correct!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

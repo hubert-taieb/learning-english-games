@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Games Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .game-card.available {
+            cursor: pointer;
+        }
+
+        .game-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .game-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .game-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .game-description {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: inherit;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .coming-soon-btn {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .coming-soon-btn:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .game-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Educational Games</h1>
+        <p class="subtitle">Fun learning games for kids!</p>
+        
+        <div class="games-grid">
+            <!-- Fruit Hunter Game -->
+            <div class="game-card available" onclick="window.location.href='fruit-hunter/index.html'">
+                <div class="game-icon">🍎</div>
+                <h3 class="game-title">Fruit Hunter</h3>
+                <p class="game-description">
+                    Level 1: Click on fruits (words stay still)<br>
+                    Level 2: Click on fruits (words move around)<br>
+                    Test your knowledge of fruits while having fun!
+                </p>
+                <a href="fruit-hunter/index.html" class="play-btn">Play Now</a>
+            </div>
+            
+            <!-- Coming Soon Games -->
+            <div class="game-card coming-soon">
+                <div class="game-icon">🔤</div>
+                <h3 class="game-title">Word Builder</h3>
+                <p class="game-description">
+                    Build words by catching falling letters! 
+                    Improve spelling and vocabulary skills.
+                </p>
+                <button class="play-btn coming-soon-btn">Coming Soon</button>
+            </div>
+            
+            <div class="game-card coming-soon">
+                <div class="game-icon">🔢</div>
+                <h3 class="game-title">Math Bubbles</h3>
+                <p class="game-description">
+                    Pop bubbles with the correct answers to math problems! 
+                    Practice addition, subtraction, and more.
+                </p>
+                <button class="play-btn coming-soon-btn">Coming Soon</button>
+            </div>
+            
+            <div class="game-card coming-soon">
+                <div class="game-icon">🌍</div>
+                <h3 class="game-title">Geography Quest</h3>
+                <p class="game-description">
+                    Explore the world by identifying countries, capitals, and landmarks! 
+                    Learn geography through interactive gameplay.
+                </p>
+                <button class="play-btn coming-soon-btn">Coming Soon</button>
+            </div>
+            
+            <div class="game-card available" onclick="window.location.href='color-match/index.html'">
+                <div class="game-icon">🎨</div>
+                <h3 class="game-title">Color Match</h3>
+                <p class="game-description">
+                    Match colors and learn their names in French and English!
+                    Perfect for visual learners and language practice.
+                </p>
+                <a href="color-match/index.html" class="play-btn">Play Now</a>
+            </div>
+            
+            <div class="game-card available" onclick="window.location.href='animal-neighbors/index.html'">
+                <div class="game-icon">🦊</div>
+                <h3 class="game-title">Animal Neighbors</h3>
+                <p class="game-description">
+                    Learn about 15 animals, their body parts, and descriptions!
+                    4 exciting levels with opposites and riddles.
+                </p>
+                <a href="animal-neighbors/index.html" class="play-btn">Play Now</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>More games coming soon! Keep learning and having fun! 🌟</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.game-card.available');
+            
+            gameCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.background = 'linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.background = 'white';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
